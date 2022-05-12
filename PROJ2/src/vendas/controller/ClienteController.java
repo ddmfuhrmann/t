@@ -8,7 +8,14 @@ import vendas.model.Cliente;
 public class ClienteController {
 	private HashMap<Integer, Cliente> clientes = new HashMap<>();
 	
-	public void inserirCliente(Cliente cliente) {
+	public void inserirCliente(Cliente cliente) throws Exception {
+		if (clientes.containsKey(cliente.getId())) {			
+			throw new Exception("Já existe um cliente com esse código.");
+		}
+		if (cliente.getNome().trim().equals("")) {
+			throw new Exception("Não é possível inserir clientes sem nome.");
+		}
+		
 		clientes.put(cliente.getId(), cliente);
 	}
 	

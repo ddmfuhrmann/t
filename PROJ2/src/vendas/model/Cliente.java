@@ -44,4 +44,13 @@ public class Cliente {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	
+	public boolean isNew() {
+		if (id == 0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }
