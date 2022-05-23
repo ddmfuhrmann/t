@@ -20,6 +20,7 @@ public class VendasApp {
 	
 	public static void main(String[] args) {
 		//controlar os clientes
+		System.out.println("Teste");
 		ClienteController clienteController = new ClienteController();
 		//instancia e grava clientes pré armazenados
 		//caso queira armanezar outros tipos, executar aqui

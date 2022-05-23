@@ -12,7 +12,8 @@ public class ClienteController {
 		if (clientes.containsKey(cliente.getId())) {			
 			throw new Exception("Já existe um cliente com esse código.");
 		}
-		if (cliente.getNome().trim().equals("")) {
+		if (cliente.getNome() == null ||
+				cliente.getNome().trim().equals("")) {
 			throw new Exception("Não é possível inserir clientes sem nome.");
 		}
 		
