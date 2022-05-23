@@ -1,6 +1,7 @@
 package vendas.test.controller;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Collection;
 
@@ -18,7 +19,7 @@ public class ClienteControllerTest {
 	private ClienteController controller;
 	
 	@BeforeAll
-	void set() {
+	void setup() {
 		controller = new ClienteController();
 	}
 	
@@ -29,9 +30,19 @@ public class ClienteControllerTest {
 		assertNotNull(list);
 	}		
 	
+	/**
+	 * Quando tentar inserir sem nome, deve lançar uma exception
+	 * @throws Exception
+	 */
+	@DisplayName("Testa a validação de nome")
+	@Test
+	void testeExceptionNome() {
+		assertThrows(Exception.class, () -> controller.inserirCliente(new Cliente()));
+	}
+	
 	@DisplayName("Testa a inserção de um cliente")
 	@Test
 	void testeInsert() throws Exception {
-		controller.inserirCliente(new Cliente());
+		controller.inserirCliente(new Cliente(0, "123456789-00", "Daniel"));
 	}
 }

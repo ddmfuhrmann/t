@@ -1,12 +1,25 @@
 package vendas.controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
 
 import vendas.model.Cliente;
 
 public class ClienteController {
 	private HashMap<Integer, Cliente> clientes = new HashMap<>();
+	
+	public List<Cliente> listCliente(String nome) {
+		List<Cliente> resultado = new ArrayList<>();
+		for (Entry<Integer, Cliente> entry : clientes.entrySet()) {
+			if (entry.getValue().getNome().equals(nome)) {
+				resultado.add(entry.getValue());
+			}
+		}
+		return resultado;
+	} 
 	
 	public void inserirCliente(Cliente cliente) throws Exception {
 		if (clientes.containsKey(cliente.getId())) {			
